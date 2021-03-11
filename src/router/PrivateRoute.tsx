@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { authStore } from '../zustand/auth-store';
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
 
-  const isLogged = true;
+  const isLogged = authStore(state => !!state?.data?.accessToken);
 
   return (
     <Route

@@ -1,7 +1,10 @@
 import React from 'react';
-import { Grid, Box, Container, Input, Stack, Button, CircularProgress } from '@chakra-ui/react';
+import { Grid, Box, Container, Stack } from '@chakra-ui/react';
 import { authStore } from '../../zustand/auth-store';
 import actions from '../../zustand/auth-store/actions';
+import ApplicationForm from '../../components/ApplicationForm';
+import fields from './fields';
+import { schema } from './schema';
 
 const Login = ({ history }: any) => {
 
@@ -33,12 +36,16 @@ const Login = ({ history }: any) => {
             </Grid>
 
             <Stack spacing={3}>
-              <Input value={email} onChange={e => changeFields({ key: 'email', value: e.target.value })} variant="outline" placeholder="email" type={'email'} />
-              <Input value={password} onChange={e => changeFields({ key: 'password', value: e.target.value })} variant="outline" placeholder="password" type={'password'} />
 
-              <Button variant="solid" color="#fff" background="#48cae4" onClick={login}>
-                {isLoading ? <CircularProgress size={'20px'} isIndeterminate /> : 'Login'}
-              </Button>
+              <ApplicationForm
+                items={fields}
+                onChange={changeFields}
+                values={{ email, password }}
+                validationSchema={schema}
+                onSubmit={login}
+                buttonLabel={'Login'}
+                isLoading={isLoading}
+              />
             </Stack>
 
           </Grid>

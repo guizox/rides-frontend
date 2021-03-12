@@ -26,6 +26,9 @@ const actions = (dispatch: any) => ({
         dispatch({ type: Types.AUTH_LOGIN_REJECTED });
       }
     })
+  },
+  logout: () => {
+    dispatch({ type: Types.AUTH_LOGOUT });
   }
 })
 

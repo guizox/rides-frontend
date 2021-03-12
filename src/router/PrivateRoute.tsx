@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import Skeleton from '../components/Skeleton';
 import { authStore } from '../zustand/auth-store';
 
 const PrivateRoute = ({ component: Component, ...rest }: any) => {
@@ -12,7 +13,10 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => {
       render={({ location }) => {
         return (
           isLogged ?
-            <Component {...rest} /> :
+            <Skeleton>
+              <Component {...rest} />
+            </Skeleton>
+            :
             <Redirect to={{ pathname: '/', state: { from: location } }} />
         )
       }}

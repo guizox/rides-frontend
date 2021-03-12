@@ -1,4 +1,5 @@
 import { Types } from './types';
+import { initialState } from '.';
 
 const reducer = (state: any, { type, payload }: any) => {
   switch (type) {
@@ -28,7 +29,8 @@ const reducer = (state: any, { type, payload }: any) => {
         ...state,
         isLoading: false,
       }
-
+    case Types.AUTH_LOGOUT:
+      return initialState
   }
 
 

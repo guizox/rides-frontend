@@ -3,7 +3,7 @@ import create from 'zustand'
 import { persist, redux } from "zustand/middleware"
 import reducer from './reducer'
 
-const initialState: State = {
+export const initialState: State = {
   fields: {
     email: '',
     password: '',

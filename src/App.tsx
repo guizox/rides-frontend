@@ -1,15 +1,14 @@
 import * as React from "react"
 import {
   ChakraProvider,
-  Box,
-  Grid,
   theme,
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import Router from './router';
+import Alerts from "./container/Alerts";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
+    <Alerts />
     <Router />
   </ChakraProvider>
 )

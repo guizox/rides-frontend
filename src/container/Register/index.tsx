@@ -6,17 +6,12 @@ import ApplicationForm from '../../components/ApplicationForm';
 import fields from './fields';
 import { schema } from './schema';
 
-const Login = ({ history }: any) => {
+const Register = () => {
 
-  const { fields: { email, password }, isLoading, data } = authStore();
+  const { fields: { email, password }, isLoading } = authStore();
   const dispatch = authStore(state => state.dispatch);
-  const { changeFields, login } = actions(dispatch);
+  const { changeRegisterFields, register } = actions(dispatch);
 
-  React.useEffect(() => {
-    if (data?.accessToken) {
-      history.push('/dashboard');
-    }
-  }, [data?.accessToken, history])
 
   return (
     <Box>
@@ -39,18 +34,18 @@ const Login = ({ history }: any) => {
 
               <ApplicationForm
                 items={fields}
-                onChange={changeFields}
+                onChange={changeRegisterFields}
                 values={{ email, password }}
                 validationSchema={schema}
-                onSubmit={login}
-                buttonLabel={'Login'}
+                onSubmit={register}
+                buttonLabel={'Registrar-se'}
                 isLoading={isLoading}
               />
 
               <Grid>
-                <Grid justifySelf="flex-end">
-                  <Link href="/register">
-                    Registre-se
+                <Grid justifySelf="flex-start">
+                  <Link href="/">
+                    Voltar
                   </Link>
                 </Grid>
               </Grid>
@@ -63,4 +58,4 @@ const Login = ({ history }: any) => {
   )
 }
 
-export default Login;
+export default Register;

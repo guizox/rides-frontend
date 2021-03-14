@@ -4,22 +4,13 @@ import { persist, redux } from "zustand/middleware"
 import reducer from './reducer'
 
 export const initialState: State = {
-  fields: {
-    email: '',
-    password: '',
-  },
-  registerFields: {
-    email: '',
-    password: ''
-  },
-  isLoading: false,
-  isCreating: false,
-  data: null
+  notifications: [],
+  closed: [],
 }
 
-export const authStore = create(persist(
+export const notificationsStore = create(persist(
   redux(reducer, initialState),
   {
-    name: 'auth-store'
+    name: 'notifications-store'
   }
 ))

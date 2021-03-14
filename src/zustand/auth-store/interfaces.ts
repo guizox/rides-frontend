@@ -5,6 +5,8 @@ export interface AuthFields {
 
 export interface State {
   fields: AuthFields;
+  registerFields: AuthFields;
   isLoading: boolean;
+  isCreating: boolean;
   data: any;
 }

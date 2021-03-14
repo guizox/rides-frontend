@@ -11,6 +11,14 @@ const reducer = (state: any, { type, payload }: any) => {
           [payload.key]: payload.value
         }
       }
+    case Types.AUTH_CHANGE_REGISTER_FIELDS:
+      return {
+        ...state,
+        registerFields: {
+          ...state.registerFields,
+          [payload.key]: payload.value
+        }
+      }
     case Types.AUTH_LOGIN_REQUEST:
       return {
         ...state,
@@ -28,6 +36,24 @@ const reducer = (state: any, { type, payload }: any) => {
       return {
         ...state,
         isLoading: false,
+      }
+
+    case Types.AUTH_REGISTER_REQUEST:
+      return {
+        ...state,
+        isCreating: true,
+      }
+
+    case Types.AUTH_REGISTER_FULFILLED:
+      return {
+        ...state,
+        isCreating: false,
+      }
+
+    case Types.AUTH_REGISTER_REJECTED:
+      return {
+        ...state,
+        isCreating: false,
       }
     case Types.AUTH_LOGOUT:
       return initialState

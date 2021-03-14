@@ -1,4 +1,6 @@
-const fields = [
+import { ApplicationFormItem } from "../../components/ApplicationForm/interfaces";
+
+const fields: ApplicationFormItem[] = [
   {
     type: 'email',
     label: 'Email',

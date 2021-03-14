@@ -1,21 +1,34 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { Button, CircularProgress, Grid, Input, Stack, Text } from '@chakra-ui/react';
-import { Props } from 'framer-motion/types/types';
-import { ApplicationFormItem } from './interfaces';
+import { Button, CircularProgress, Grid, Input, Text, GridItem } from '@chakra-ui/react';
+import { ApplicationFormItem, Props } from './interfaces';
 
-const ApplicationForm = ({ items, onChange, values, validationSchema, onSubmit, isLoading, buttonLabel }: Props) => {
-
+const ApplicationForm = ({
+  items,
+  onChange,
+  values,
+  validationSchema,
+  onSubmit,
+  isLoading,
+  buttonLabel,
+  columns
+}: Props) => {
 
   return (
-    <Grid justifyContent="center" alignContent="center" alignItems="center">
+    <Grid justifyContent="center" alignContent="center" alignItems="center" id="teste">
       <Formik initialValues={values} onSubmit={onSubmit} validationSchema={validationSchema}>
 
         {({ errors, values, setFieldValue }) =>
-          <Form>
-            <Stack spacing={3}>
+          <Form >
+            <Grid
+              templateColumns={[
+                `repeat(${columns?.sm || 1}, 1fr)`,
+                `repeat(${columns?.md || 1}, 1fr)`,
+                `repeat(${columns?.lg || 1}, 1fr)`,
+                `repeat(${columns?.xl || 1}, 1fr)`
+              ]} gap={3}>
               {items.map((item: ApplicationFormItem) =>
-                <Grid key={item.accessor}>
+                <GridItem key={item.accessor} {...item.styles} colSpan={[item.sm, item.md, item.lg, item.xl]}>
                   <Input
                     value={values[item.accessor]}
                     onChange={e => {
@@ -33,16 +46,18 @@ const ApplicationForm = ({ items, onChange, values, validationSchema, onSubmit, 
                       {errors[item.accessor]}
                     </Text>
                   </Grid>
-                </Grid>
+                </GridItem>
               )}
 
-
-              <Button variant="solid" color="#fff" background="#48cae4" type="submit">
+              <Button variant="solid" color="#fff" background="#48cae4" type="submit" display={['none', 'none', 'flex', 'flex']}>
                 {isLoading ? <CircularProgress size={'20px'} isIndeterminate /> : buttonLabel || 'Login'}
               </Button>
-            </Stack>
+            </Grid>
           </Form>}
       </Formik>
+      <Button variant="solid" mt="2" color="#fff" background="#48cae4" type="submit" display={['flex', 'flex', 'none', 'none']}>
+        {isLoading ? <CircularProgress size={'20px'} isIndeterminate /> : buttonLabel || 'Login'}
+      </Button>
     </Grid >
   )
 }

@@ -28,16 +28,9 @@ const Skeleton = ({ children }: Props) => {
         background="#48cae4"
       >
         <Grid justifySelf="flex-start" alignContent="center" justifyItems="center">
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Options"
-              icon={<HamburgerIcon />}
-              size="xs"
-              variant="outline"
-            />
-
-          </Menu>
+          <a href="/dashboard">
+            <img src="logo-branco.png" alt="logo-branco" width="80px" />
+          </a>
         </Grid>
 
         <Grid justifySelf="flex-end">

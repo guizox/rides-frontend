@@ -8,39 +8,48 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react"
+import { ridesStore } from '../../../../zustand/rides';
+import moment from 'moment';
+import { formatCurrency } from '../../../../utils';
 
 const RidesTable = () => {
+
+  const { data } = ridesStore();
+
+
   return (
     <Table variant="simple" w={'100vw'}>
       <Thead>
         <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
+          <Th>Descrição</Th>
+          <Th>Categoria</Th>
+          <Th >Data</Th>
+          <Th isNumeric>Valor</Th>
         </Tr>
       </Thead>
       <Tbody>
-        <Tr>
-          <Td>inches</Td>
-          <Td>millimetres (mm)</Td>
-          <Td isNumeric>25.4</Td>
-        </Tr>
-        <Tr>
-          <Td>feet</Td>
-          <Td>centimetres (cm)</Td>
-          <Td isNumeric>30.48</Td>
-        </Tr>
-        <Tr>
-          <Td>yards</Td>
-          <Td>metres (m)</Td>
-          <Td isNumeric>0.91444</Td>
-        </Tr>
+
+        {
+          data.map((item: any) =>
+
+            <Tr>
+              <Td>{item.description}</Td>
+              <Td>{item.category}</Td>
+              <Td>{moment(item.createdAt).format('DD/MM/YYYY')}</Td>
+              <Td isNumeric>{formatCurrency(item.amount)}</Td>
+            </Tr>
+          )
+        }
+
+
+
       </Tbody>
       <Tfoot>
         <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-          <Th isNumeric>multiply by</Th>
+          <Th></Th>
+          <Th></Th>
+          <Th></Th>
+          <Th isNumeric>{formatCurrency(data.reduce((acc: number, cur: any) => acc + cur.amount, 0))}</Th>
         </Tr>
       </Tfoot>
     </Table>

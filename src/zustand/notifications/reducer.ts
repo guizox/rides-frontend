@@ -2,7 +2,6 @@ import { Types } from './types';
 
 const reducer = (state: any, { type, payload }: any) => {
 
-  console.log({ type, payload, state })
   switch (type) {
     case Types.NOTIFICATION_SHOW:
       return {

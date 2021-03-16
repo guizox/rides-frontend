@@ -10,18 +10,19 @@ import AddDialog from './components/AddDialog';
 
 const Dashboard = () => {
 
-  const [open, setOpen] = React.useState(false);
-  const { dispatch } = ridesStore()
-  const { getAll } = actions(dispatch);
+  const { dispatch, openDialog } = ridesStore()
+  const { getAll, getAllCategories, handleDialog } = actions(dispatch);
 
   React.useEffect(() => {
     getAll();
+    getAllCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
 
-    <Grid w="100%" h="80vh" >
-      <AddDialog open={open} onClose={() => setOpen(!open)} />
+    <Grid w="100%" h="91vh" >
+      <AddDialog />
       <VStack spacing={7}>
         <Grid >
           <Filter />
@@ -42,10 +43,10 @@ const Dashboard = () => {
         bottom={0}
         right="0"
         padding={20}
-        onClick={() => setOpen(!open)}
+        onClick={() => handleDialog(!openDialog)}
       >
         <WrapItem cursor="pointer">
-          <Avatar cursor="pointer" background="#48cae4" icon={<AddIcon color="white" cursor="pointer" />} />
+          <Avatar cursor="pointer" background="#48cae4" icon={<AddIcon color="white" cursor="pointer" />} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} />
         </WrapItem>
       </Grid>
     </Grid>

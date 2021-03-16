@@ -16,6 +16,7 @@ const RidesTable = () => {
 
   const { data } = ridesStore();
 
+  const sum = data.reduce((acc: number, cur: any) => acc + parseFloat(cur.amount), 0)
 
   return (
     <Table variant="simple" w={'100vw'}>
@@ -28,9 +29,8 @@ const RidesTable = () => {
         </Tr>
       </Thead>
       <Tbody>
-
         {
-          data.map((item: any) =>
+          data?.map((item: any) =>
 
             <Tr>
               <Td>{item.description}</Td>
@@ -40,16 +40,13 @@ const RidesTable = () => {
             </Tr>
           )
         }
-
-
-
       </Tbody>
       <Tfoot>
         <Tr>
           <Th></Th>
           <Th></Th>
           <Th></Th>
-          <Th isNumeric>{formatCurrency(data.reduce((acc: number, cur: any) => acc + cur.amount, 0))}</Th>
+          <Th isNumeric>{formatCurrency(sum)}</Th>
         </Tr>
       </Tfoot>
     </Table>

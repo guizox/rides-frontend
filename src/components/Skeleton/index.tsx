@@ -1,7 +1,7 @@
 import React from 'react';
-import { Avatar, Box, Grid, IconButton, Menu, MenuButton, MenuItem, MenuList, WrapItem } from '@chakra-ui/react';
+import { Avatar, Box, Grid, Menu, MenuButton, MenuItem, MenuList, WrapItem } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../../ColorModeSwitcher';
-import { HamburgerIcon, AddIcon } from '@chakra-ui/icons';
+import { AddIcon } from '@chakra-ui/icons';
 import { authStore } from '../../zustand/auth-store';
 import actions from '../../zustand/auth-store/actions';
 
@@ -11,8 +11,9 @@ interface Props {
 
 const Skeleton = ({ children }: Props) => {
 
-  const dispatch = authStore(state => state.dispatch);
+  const { dispatch, data } = authStore();
   const { logout } = actions(dispatch);
+  console.log(data.accessToken);
 
   return (
     <Grid >
@@ -26,6 +27,7 @@ const Skeleton = ({ children }: Props) => {
         p={3}
         borderBottom="1px solid #f0f0f0"
         background="#48cae4"
+        boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
       >
         <Grid justifySelf="flex-start" alignContent="center" justifyItems="center">
           <a href="/dashboard">
@@ -48,8 +50,7 @@ const Skeleton = ({ children }: Props) => {
                     <WrapItem>
                       <Avatar
                         size="md"
-                        name="Prosper Otemuyiwa"
-                        src="https://bit.ly/prosper-baba"
+                        name={'Avatar'}
                       />{" "}
                     </WrapItem>}
                 />

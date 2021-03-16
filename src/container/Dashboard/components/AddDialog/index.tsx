@@ -8,16 +8,16 @@ import {
   ModalCloseButton
 } from "@chakra-ui/react";
 import AddForm from './AddForm';
+import { ridesStore } from '../../../../zustand/rides';
+import actions from '../../../../zustand/rides/actions';
 
-interface Props {
-  open: boolean;
-  onClose: () => void;
-}
+const AddDialog = () => {
 
-const AddDialog = ({ open, onClose }: Props) => {
+  const { openDialog, dispatch } = ridesStore();
+  const { handleDialog } = actions(dispatch);
 
   return (
-    <Modal isOpen={open} onClose={onClose}>
+    <Modal isOpen={openDialog} onClose={() => handleDialog(false)}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Adicione uma nova corrida</ModalHeader>

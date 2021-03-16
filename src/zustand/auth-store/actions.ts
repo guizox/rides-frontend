@@ -16,6 +16,9 @@ const actions = (dispatch: any) => ({
   login: () => {
     unstable_batchedUpdates(async () => {
       const { fields } = authStore.getState();
+      const notifications = notificationsStore.getState();
+
+      const { notificationsShow } = notificationsActions(notifications.dispatch);
 
       dispatch({ type: Types.AUTH_LOGIN_REQUEST });
 
@@ -25,9 +28,11 @@ const actions = (dispatch: any) => ({
           data: fields
         })
 
-        dispatch({ type: Types.AUTH_LOGIN_FULFILLED, payload: response?.data });
+        await dispatch({ type: Types.AUTH_LOGIN_FULFILLED, payload: response?.data });
+
 
       } catch (e) {
+        dispatch(notificationsShow({ status: 'error', message: 'Usuário ou senha inválidos.' }));
         dispatch({ type: Types.AUTH_LOGIN_REJECTED });
       }
     })

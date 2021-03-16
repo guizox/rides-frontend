@@ -2,20 +2,16 @@ export interface ApplicationFormItem {
   type: string,
   label: string;
   accessor: string;
-  inputType: 'textfield';
+  inputType: 'textfield' | 'currency' | 'text-with-options';
   styles?: any;
   sm?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   md?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   lg?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   xl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  options?: string[];
 }
 
-export interface Columns {
-  sm: number,
-  md: number,
-  lg: number,
-  xl: number
-}
+
 
 export interface Props {
   items: ApplicationFormItem[]
@@ -25,5 +21,11 @@ export interface Props {
   values: any;
   isLoading?: boolean;
   buttonLabel?: string;
-  columns?: Columns;
+  columns?: number;
+}
+
+export interface FieldProps {
+  item: ApplicationFormItem,
+  values: any,
+  [prop: string]: any
 }

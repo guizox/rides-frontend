@@ -1,31 +1,46 @@
 import { ApplicationFormItem } from "../../../../../components/ApplicationForm/interfaces";
 
 
-const fields: ApplicationFormItem[] = [
-  {
-    type: 'text',
-    label: 'Descrição',
-    accessor: 'description',
-    inputType: 'textfield'
-  },
-  {
-    type: 'text',
-    label: 'Valor',
-    accessor: 'amount',
-    inputType: 'textfield'
-  },
-  {
-    type: 'text',
-    label: 'Categoria',
-    accessor: 'category',
-    inputType: 'textfield'
-  },
-  {
-    type: 'date',
-    label: 'Data',
-    accessor: 'createdAt',
-    inputType: 'textfield'
-  }
-]
+const screenFields: (options: string[]) => ApplicationFormItem[] = (
+  options: string[]
+) => [
+    {
+      type: 'text',
+      label: 'Descrição',
+      accessor: 'description',
+      inputType: 'textfield',
+      styles: {
+        width: '400px'
+      }
+    },
+    {
+      type: 'text',
+      label: 'Valor',
+      accessor: 'amount',
+      inputType: 'currency',
+      styles: {
+        width: '400px'
+      }
+    },
+    {
+      type: 'text',
+      label: 'Categoria',
+      accessor: 'category',
+      inputType: 'text-with-options',
+      styles: {
+        width: '400px'
+      },
+      options: options
+    },
+    {
+      type: 'date',
+      label: 'Data',
+      accessor: 'createdAt',
+      inputType: 'textfield',
+      styles: {
+        width: '400px'
+      }
+    }
+  ]
 
-export default fields;
+export default screenFields;

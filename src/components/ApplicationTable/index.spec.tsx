@@ -100,7 +100,6 @@ describe('Applcation Table tests', () => {
 
     const { queryByTestId } = render(
       <ApplicationTable
-        data={data}
         tableStructure={[
           {
             accessor: 'a',

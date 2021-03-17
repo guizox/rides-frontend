@@ -1,5 +1,4 @@
 import React from 'react';
-import Application from './';
 import { render } from '@testing-library/react';
 import ApplicationTable from './';
 import { Th, Tr } from '@chakra-ui/table';

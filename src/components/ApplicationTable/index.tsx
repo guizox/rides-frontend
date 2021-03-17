@@ -11,30 +11,32 @@ import {
 } from "@chakra-ui/react"
 import { Props } from './interfaces';
 
-const ApplicationTable = <T extends { [props: string]: any }>({ tableStructure, data, footer }: Props<T>) => {
+const ApplicationTable = <T extends Record<string, any>>({ tableStructure, data, footer }: Props<T>) => {
   return (
-    <Table variant="simple" w={'100vw'}>
+    <Table variant="simple" w={'100vw'} data-testid="application-table">
       <Thead>
         <Tr>
           {
-            tableStructure.map(item => <Th isNumeric={item.isNumeric}>{item.label}</Th>)
+            tableStructure.map(item => <Th key={`header-${item.label}`} data-testid={`header-${item.label}`} isNumeric={item.isNumeric}>{item.label}</Th>)
           }
         </Tr>
       </Thead>
       <Tbody>
         {
-          data?.map(item =>
-            <Tr>
+          data?.map((item, index) =>
+            <Tr key={`line-${index}`} data-testid={`line-${index}`}  >
               {
-                tableStructure.map(column => <Td isNumeric={column.isNumeric}>{item[column.accessor]}</Td>)
+                tableStructure.map(column => <Td key={`column-${column.accessor}-line-${index}`} data-testid={`column-${column.accessor}-line-${index}`} isNumeric={column.isNumeric}>{item[column.accessor]}</Td>)
               }
             </Tr>
           )
         }
       </Tbody>
-      <Tfoot>
-        {footer}
-      </Tfoot>
+      {footer &&
+        <Tfoot data-testid="application-table-footer">
+          {footer}
+        </Tfoot>
+      }
     </Table>
   )
 }

@@ -11,9 +11,8 @@ interface Props {
 
 const Skeleton = ({ children }: Props) => {
 
-  const { dispatch, data } = authStore();
+  const { dispatch } = authStore();
   const { logout } = actions(dispatch);
-  console.log(data.accessToken);
 
   return (
     <Grid >

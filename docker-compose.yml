@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  rides-front-end:
+    image: rides-front-end
+    container_name: rides-front-end
+    hostname: rides-front-end
+    build: .
+    restart: always
+    ports:
+      - 80:80
+networks:
+  default:
+    external:
+      name: rides-network

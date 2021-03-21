@@ -17,7 +17,7 @@ const actions = (dispatch: any) => ({
     const { startDate, endDate, ...rest } = filters;
 
     try {
-      const response = await apis({ baseURL: 'http://localhost:3001' }).post({
+      const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://localhost:3001' }).post({
         url: '/ride/findAll',
         headers: {
           Authorization: `${TOKEN_TYPE} ${accessToken}`
@@ -52,7 +52,7 @@ const actions = (dispatch: any) => ({
 
 
     try {
-      const response = await apis({ baseURL: 'http://localhost:3001' }).post({
+      const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://localhost:3001' }).post({
         url: '/ride',
         headers: {
           Authorization: `${TOKEN_TYPE} ${accessToken}`
@@ -72,7 +72,7 @@ const actions = (dispatch: any) => ({
     const { data: { accessToken } } = authStore.getState();
 
 
-    const response = await apis({ baseURL: 'http://localhost:3001' }).get({
+    const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://localhost:3001' }).get({
       url: '/ride/categories',
       headers: {
         Authorization: `${TOKEN_TYPE} ${accessToken}`

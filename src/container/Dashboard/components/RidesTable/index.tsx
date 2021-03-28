@@ -31,11 +31,11 @@ const RidesTable = () => {
           createdAt: moment(item.createdAt).format('DD/MM/YYYY'),
           amount: formatCurrency(item.amount),
           actions: 
-          <Grid display="flex" justifyContent="space-between">
+          <Grid display="flex" justifyContent="flex-start">
             <Button background="blue.300" color="white" onClick={() => duplicateAction(item.id)}>
               Duplicar
             </Button>
-            <Button background="red.200" color="white" onClick={() => handleExcludeDialog(item)}>
+            <Button marginLeft="20px" background="red.200" color="white" onClick={() => handleExcludeDialog(item)}>
               Excluir
             </Button>
           </Grid>

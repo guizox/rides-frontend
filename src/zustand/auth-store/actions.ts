@@ -23,7 +23,7 @@ const actions = (dispatch: any) => ({
       dispatch({ type: Types.AUTH_LOGIN_REQUEST });
 
       try {
-        const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://localhost:3001' }).post({
+        const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://3.142.108.255:3000' }).post({
           url: '/auth/sign-in',
           data: fields
         })
@@ -49,7 +49,7 @@ const actions = (dispatch: any) => ({
       dispatch({ type: Types.AUTH_REGISTER_REQUEST });
 
       try {
-        await apis({ baseURL: process.env.REACT_APP_URL || 'http://localhost:3001' }).post({
+        await apis({ baseURL: process.env.REACT_APP_URL || 'http://3.142.108.255:3000' }).post({
           url: '/auth/signup',
           data: fields
         })

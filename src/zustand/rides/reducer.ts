@@ -69,7 +69,13 @@ const reducer = (state: any, { type, payload }: any) => {
     case Types.RIDES_HANDLE_DIALOG:
       return {
         ...state,
-        openDialog: payload
+        openDialog: payload,
+        fields: payload ? {
+          ...state.fields,
+          description: '',
+          amount: '',
+          category: '',
+        } : state.fields
       }
   }
 }

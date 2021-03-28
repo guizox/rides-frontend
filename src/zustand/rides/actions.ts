@@ -81,7 +81,38 @@ const actions = (dispatch: any) => ({
 
     dispatch({ type: Types.RIDES_GET_ALL_CATEGORIES_FULFILLED, payload: response?.data })
   }),
-  handleDialog: (payload: boolean) => dispatch({ type: Types.RIDES_HANDLE_DIALOG, payload })
+  handleDialog: (payload: boolean) => dispatch({ type: Types.RIDES_HANDLE_DIALOG, payload }),
+  handleExcludeDialog: (payload: boolean) => dispatch({ type: Types.RIDES_EXCLUDE_HANDLE_DIALOG, payload }),
+  duplicateAction: (id: number) => unstable_batchedUpdates(async ()=> {
+    const { data } = ridesStore.getState();
+
+    const sameInformation = data.find((item: any) => item.id === id);
+
+    dispatch({ type: Types.RIDES_DUPLICATE, payload: sameInformation });
+  }),
+
+  removeAction: (callback?: any) => unstable_batchedUpdates(async () => {
+
+    const { data: { accessToken } } = authStore.getState();
+    const { excludeId } = ridesStore.getState();
+
+    dispatch({ type: Types.RIDES_REMOVE_REQUEST });
+
+    try {
+      const response = await apis({ baseURL: process.env.REACT_APP_URL || 'http://3.142.108.255:3000' }).delete({
+        url: `/ride/${excludeId.id}`,
+        headers: {
+          Authorization: `${TOKEN_TYPE} ${accessToken}`
+        },
+      })
+
+      dispatch({ type: Types.RIDES_REMOVE_FULFILLED, payload: response?.data });
+      callback();
+    } catch(e) {
+      dispatch({ type: Types.RIDES_REMOVE_REJECTED });
+    }
+    
+  }),
 })
 
 export default actions;

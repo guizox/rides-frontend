@@ -75,8 +75,38 @@ const reducer = (state: any, { type, payload }: any) => {
           description: '',
           amount: '',
           category: '',
+          createdAt: ''
         } : state.fields
       }
+    case Types.RIDES_DUPLICATE:
+      return {
+        ...state,
+        openDialog: true,
+        fields: payload
+      }
+    case Types.RIDES_EXCLUDE_HANDLE_DIALOG:
+      return {
+        ...state,
+        excludeId: payload
+      }
+
+      case Types.RIDES_REMOVE_REQUEST:
+        return {
+          ...state,
+          isExcluding: true,
+        }
+      case Types.RIDES_REMOVE_FULFILLED:
+        return {
+          ...state,
+          isExcluding: false,
+          excludeId: null,
+        }
+      case Types.RIDES_REMOVE_REJECTED:
+        return {
+          ...state,
+          isExcluding: false,
+          excludeId: null,
+        }
   }
 }
 

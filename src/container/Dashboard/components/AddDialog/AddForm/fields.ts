@@ -5,6 +5,15 @@ const screenFields: (options: string[]) => ApplicationFormItem[] = (
   options: string[]
 ) => [
     {
+      type: 'date',
+      label: 'Data',
+      accessor: 'createdAt',
+      inputType: 'textfield',
+      styles: {
+        width: '400px'
+      }
+    },
+    {
       type: 'text',
       label: 'Descrição',
       accessor: 'description',
@@ -32,15 +41,6 @@ const screenFields: (options: string[]) => ApplicationFormItem[] = (
       },
       options: options
     },
-    {
-      type: 'date',
-      label: 'Data',
-      accessor: 'createdAt',
-      inputType: 'textfield',
-      styles: {
-        width: '400px'
-      }
-    }
   ]
 
 export default screenFields;

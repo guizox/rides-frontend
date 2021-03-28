@@ -20,9 +20,11 @@ export const initialState: State = {
     amount: '',
     description: '',
     endDate: moment().format('YYYY-MM-DD'),
-    startDate: moment().format('YYYY-MM-DD'),
+    startDate: moment().format('YYYY-MM-01'),
   },
   openDialog: false,
+  excludeId: null,
+  isExcluding: false
 }
 
 export const ridesStore = create(persist(

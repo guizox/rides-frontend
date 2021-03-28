@@ -7,6 +7,7 @@ import { Divider } from "@chakra-ui/react"
 import { ridesStore } from '../../zustand/rides';
 import actions from '../../zustand/rides/actions';
 import AddDialog from './components/AddDialog';
+import ConfirmationDialog from './components/ConfirmationDialog';
 
 const Dashboard = () => {
 
@@ -23,6 +24,7 @@ const Dashboard = () => {
 
     <Grid w="100%" h="91vh" >
       <AddDialog />
+      <ConfirmationDialog />
       <VStack spacing={7}>
         <Grid >
           <Filter />

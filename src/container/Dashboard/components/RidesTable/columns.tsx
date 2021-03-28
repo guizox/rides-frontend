@@ -1,3 +1,4 @@
+
 import { TableStructure } from '../../../../components/ApplicationTable/interfaces';
 
 export const columns: TableStructure[] = [
@@ -16,5 +17,9 @@ export const columns: TableStructure[] = [
   {
     accessor: 'amount',
     label: 'Valor',
+  },
+  {
+    accessor: 'actions',
+    label: 'Ações',
   }
 ]

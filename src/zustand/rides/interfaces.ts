@@ -21,4 +21,6 @@ export interface State {
   filters: RidesFitlers;
   allCategories: string[];
   openDialog: false,
+  excludeId: any;
+  isExcluding: boolean;
 }

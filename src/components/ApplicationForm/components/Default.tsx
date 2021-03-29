@@ -50,16 +50,7 @@ const DefaultInput = ({ values, item, errors, ...rest }: Props) => {
                 });
                 setShowOptions(false);
               }}>
-              <p onClick={() => {
-                rest.onChange({
-                  target: {
-                    value: str
-                  }
-                });
-                setShowOptions(false);
-              }}>
                 {str}
-              </p>
             </Button>
           )}
         </Grid>}

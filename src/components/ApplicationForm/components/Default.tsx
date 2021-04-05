@@ -15,8 +15,6 @@ interface Props {
 const DefaultInput = ({ values, item, errors, ...rest }: Props) => {
   const [showOptions, setShowOptions] = React.useState(false);
 
-  console.log(item.options);
-
   return (
     <React.Fragment>
       <Input
@@ -31,7 +29,7 @@ const DefaultInput = ({ values, item, errors, ...rest }: Props) => {
         onBlur={() => {
           setTimeout(() => {
             setShowOptions(false)
-          }, 100);
+          }, 350);
         }}
       />
       {showOptions &&

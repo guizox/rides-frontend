@@ -24,9 +24,19 @@ const ApplicationTable = <T extends Record<string, any>>({ tableStructure, data,
       <Tbody>
         {
           data?.map((item, index) =>
-            <Tr key={`line-${index}`} data-testid={`line-${index}`}  >
+            <Tr key={`line-${index}`} data-testid={`line-${index}`} >
               {
-                tableStructure.map(column => <Td key={`column-${column.accessor}-line-${index}`} data-testid={`column-${column.accessor}-line-${index}`} isNumeric={column.isNumeric}>{item[column.accessor]}</Td>)
+                tableStructure.map(column => 
+                  <Td 
+                    maxHeight={'60px'}  
+                    key={`column-${column.accessor}-line-${index}`} 
+                    data-testid={`column-${column.accessor}-line-${index}`} 
+                    isNumeric={column.isNumeric}
+                    padding="3px 30px"
+                  >
+                    {item[column.accessor]}
+                  </Td>
+                )
               }
             </Tr>
           )

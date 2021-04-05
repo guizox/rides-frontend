@@ -32,10 +32,10 @@ const RidesTable = () => {
           amount: formatCurrency(item.amount),
           actions: 
           <Grid display="flex" justifyContent="flex-start">
-            <Button background="blue.300" color="white" onClick={() => duplicateAction(item.id)}>
+            <Button background="blue.300" height="32px" color="white" onClick={() => duplicateAction(item.id)}>
               Duplicar
             </Button>
-            <Button marginLeft="20px" background="red.200" color="white" onClick={() => handleExcludeDialog(item)}>
+            <Button marginLeft="20px" height="32px" background="red.200" color="white" onClick={() => handleExcludeDialog(item)}>
               Excluir
             </Button>
           </Grid>
@@ -45,7 +45,12 @@ const RidesTable = () => {
             <Th></Th>
             <Th></Th>
             <Th></Th>
-            <Th isNumeric>{formatCurrency(sum)}</Th>
+            <Th isNumeric fontSize={20} >
+              <p style={{ textAlign: 'left' }}>
+              {formatCurrency(sum)}
+              </p>
+              </Th>
+              
           </Tr>
         } />
     </React.Fragment>

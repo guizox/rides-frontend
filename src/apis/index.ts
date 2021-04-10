@@ -8,6 +8,7 @@ export const TOKEN_TYPE = "bearer";
 
 const axiosErrorsInterceptor = (req: any) => {
   if (req?.response?.status === 401) {
+      alert('A chave venceu, você está sendo deslogado!');
       localStorage.setItem('auth-store', '');
       localStorage.setItem('notifications-store', '');
       localStorage.setItem('rides-store', '');

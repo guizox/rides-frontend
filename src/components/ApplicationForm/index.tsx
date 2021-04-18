@@ -42,13 +42,13 @@ const ApplicationForm = ({
                 </GridItem>
               )}
 
-              <Button variant="solid" color="#fff" background="#48cae4" type="submit" display={['none', 'none', 'flex', 'flex']}>
+              <Button disabled={isLoading} variant="solid" color="#fff" background="#48cae4" type="submit" display={['none', 'none', 'flex', 'flex']}>
                 {isLoading ? <CircularProgress size={'20px'} isIndeterminate /> : buttonLabel || 'Login'}
               </Button>
             </Grid>
           </Form>}
       </Formik>
-      <Button variant="solid" mt="2" color="#fff" background="#48cae4" type="submit" display={['flex', 'flex', 'none', 'none']}>
+      <Button disabled={isLoading} variant="solid" mt="2" color="#fff" background="#48cae4" type="submit" display={['flex', 'flex', 'none', 'none']}>
         {isLoading ? <CircularProgress size={'20px'} isIndeterminate /> : buttonLabel || 'Login'}
       </Button>
     </Grid >

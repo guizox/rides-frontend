@@ -34,7 +34,7 @@ const DefaultInput = ({ values, item, errors, ...rest }: Props) => {
       />
       {showOptions &&
         <Grid position="absolute" minWidth="200px" backgroundColor="#fff" zIndex={1} border="1px solid #f0f0f0" padding="5px" boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} >
-          {item?.options?.reduce((acc: any, cur: any) => acc.includes(cur) ? acc : [...acc, cur] ,[]).map((str: string) =>
+          {item && item?.options?.length && item?.options?.reduce((acc: any, cur: any) => acc.includes(cur) ? acc : [...acc, cur] ,[]).map((str: string) =>
             <Button
               padding={'10px'}
               border='3px solid #f0f0f0'

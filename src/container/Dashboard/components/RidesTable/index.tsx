@@ -18,7 +18,9 @@ const RidesTable = () => {
 
   const { duplicateAction, handleExcludeDialog } = actions(dispatch);
 
-  const sum = data.reduce((acc: number, cur: any) => acc + parseFloat(cur.amount), 0)
+  console.log(data);
+
+  const sum = data && data.length ? data?.reduce((acc: number, cur: any) => acc + parseFloat(cur.amount), 0) : 0
 
 
   return (
